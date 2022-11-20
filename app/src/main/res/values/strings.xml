@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Dictionary</string>
+    <string name="search_a_word">Search a word…</string>
+    <string name="definition">%1%s%2%s</string>
 </resources>
