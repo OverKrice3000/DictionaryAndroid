@@ -6,4 +6,4 @@ data class WordInfo(
     val phonetics: List<PhoneticModel>,
     val origin: String?,
     val meanings: List<MeaningModel>
-)
+): java.io.Serializable

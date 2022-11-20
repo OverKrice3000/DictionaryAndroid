@@ -1,5 +1,6 @@
 package com.example.dictionary
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,13 +8,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dictionary.api.DictionaryApi
-import com.example.dictionary.api.RequestQueueSingleton
 import com.example.dictionary.wordsList.WordsList
+
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -32,16 +29,14 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s != null && s.isNotEmpty()) {
-                    val args: Bundle = Bundle()
-                    args.putCharSequence("word", s);
+                    val args = Bundle()
+                    args.putCharSequence("word", s)
 
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.dictionary_list_container, WordsList::class.java, args, "WordsList")
                         .addToBackStack(null)
                         .commit()
-
-                    val fragment: Fragment? = supportFragmentManager.findFragmentByTag("WordsList")
                 }
                 else {
                     val fragment: Fragment? = supportFragmentManager.findFragmentByTag("WordsList")
@@ -59,6 +54,12 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
 
+    override fun onBackPressed() {
+        val a = Intent(Intent.ACTION_MAIN)
+        a.addCategory(Intent.CATEGORY_HOME)
+        a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(a)
     }
 }

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Dictionary</string>
     <string name="search_a_word">Search a word…</string>
-    <string name="definition">%1%s%2%s</string>
+    <string name="action_play">Favourite</string>
+    <string name="action_settings">Settings</string>
+    <string name="word_details_phonetics">Phonetics</string>
+    <string name="word_details_meanings">Meaning</string>
+    <string name="word_details_examples">Examples</string>
 </resources>
