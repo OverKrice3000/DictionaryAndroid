@@ -26,7 +26,10 @@ class DictionaryApi {
                     onError?.onError(error)
                 }
             )
-            RequestQueueSingleton.getInstance(context).addToRequestQueue(request)
+            request.tag = "getWordQuery";
+            val queue = RequestQueueSingleton.getInstance(context)
+            queue.requestQueue.cancelAll("getWordQuery")
+            queue.addToRequestQueue(request)
         }
     }
 }
